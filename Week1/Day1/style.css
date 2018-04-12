@@ -1,0 +1,71 @@
+body{
+    background-image: url(topography.png);
+    font-family: consolas
+    width:90%;
+    padding: 0 10%; 
+    
+    }
+
+header {
+    
+    background-color:#333333;
+    padding:25px; 
+    width:100%;
+    margin:0;
+}   
+
+nav a{
+
+      
+    font-family: Arial;
+    color: #ff0099;
+    font: size 10;px:
+    margin: 0px;
+    display: inline;
+    
+}
+
+nav ul li {
+    list-style-type:none;
+    display:inline;
+    float:right; 
+    margin:5px;  
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url(Merriweather-Bold.ttf);
+
+    font-family: headerFour;
+    src: url(VarelaRound-Regular.ttf)
+}
+
+h1{
+  font-family: titleFont;
+   font-size: 40px;
+
+}
+
+h2{
+    font-family: titleFont;
+    color: #ff0099;
+}
+
+h3{
+    font-family: headerFour;
+    text-align: center;
+    font-size: 30px;
+     
+  }
+
+h4{
+    font-family: headerFour;
+
+
+div{
+    width: 90%;
+    border: 0;
+    padding: 10%;
+    margin: 0; 
+}
+
