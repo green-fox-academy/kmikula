@@ -14,7 +14,7 @@ public class Checkerboard {
 
         for (int i = 0; i < 64; i++) {
             if (i % 2 == 0) {
-                for (int j = 0; j < 160; j+=20) {
+                for (int j = 0; j < 160; j += 20) {
 
                     for (int k = 0; k < 160; k += 20) {
 
@@ -27,9 +27,9 @@ public class Checkerboard {
                     }
                 }
             } else {
-                for (int j = 10; j < 160; j+=20) {
+                for (int j = 10; j < 160; j += 20) {
 
-                    for (int k = 10; k < 160; k+=20) {
+                    for (int k = 10; k < 160; k += 20) {
 
                         y = j;
                         x = k;
