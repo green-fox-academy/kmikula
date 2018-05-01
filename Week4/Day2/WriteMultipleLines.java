@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class WriteMultipleLines {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Path filePath = Paths.get("Newfile.txt");
 
@@ -25,7 +25,7 @@ public class WriteMultipleLines {
 
         for (int row = 0; row < nrOfLines; row++) {
 
-            content.add(textInput + '\n');
+            content.add(textInput +"\n");
 
         }
 
