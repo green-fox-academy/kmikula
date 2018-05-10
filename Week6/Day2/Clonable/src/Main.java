@@ -7,6 +7,8 @@ public class Main{
         Student student2 = student.clone();
 
         System.out.println("First student's name is: "+student.name + " , second student's name is: " + student2.name);
+
+        student2.introduce();
     }
 
 }
