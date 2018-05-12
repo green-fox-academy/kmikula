@@ -20,8 +20,8 @@ public class Gnirts implements CharSequence {
     @Override
     public CharSequence subSequence(int start, int end) {
         StringBuilder sb = new StringBuilder(this.text);
-        StringBuilder revSb = sb.reverse();
-        return revSb.toString().subSequence(start, end);
+        sb.reverse();
+        return sb.toString().subSequence(start, end);
 
     }
 
