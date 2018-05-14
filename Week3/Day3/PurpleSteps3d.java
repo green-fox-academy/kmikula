@@ -19,8 +19,8 @@ public class PurpleSteps3d {
             graphics.setColor(color);
             graphics.fill3DRect(x, y, width, height, true);
 
-            x = x + width;
-            y = y + height;
+            x += width;
+            y += height;
             width *= 1.5;
             height *= 1.5;
 
