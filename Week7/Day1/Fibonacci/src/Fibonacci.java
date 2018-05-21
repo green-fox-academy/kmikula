@@ -10,9 +10,8 @@ public class Fibonacci {
 
     public long fibonacci(int index) {
 
-
-        fibonacciNrs.add((long)0);
-        fibonacciNrs.add((long)1);
+        fibonacciNrs.add(0l);
+        fibonacciNrs.add(1l);
 
         int k = 2;
 
