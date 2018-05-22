@@ -2,11 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Board extends JComponent implements KeyListener {
 
     int testBoxX;
     int testBoxY;
+    String level;
+    ArrayList<String> mapTemplate;
+    int[][] map = drawMap();
+
+
+    PositionedImage hero = new PositionedImage("hero-down.png", 0, 0);
 
 
     public Board() {
@@ -19,76 +30,85 @@ public class Board extends JComponent implements KeyListener {
         setVisible(true);
     }
 
+    public int[][] drawMap() {
+        int[][] coord = new int[10][10];
+        level = "level0.txt";
+        int index2 = 0;
 
+        Path filepath = Paths.get(level);
+
+        try {
+            mapTemplate = new ArrayList<>(Files.readAllLines(filepath));
+        } catch (IOException e) {
+            System.out.println("Cannot find file for level.");
+        }
+
+
+        for (int i = 0; i < mapTemplate.size(); i++) {
+            index2 = 0;
+            for (int j = 0; j < 20; j += 2) {
+                coord[index2][i] = mapTemplate.get(i).charAt(j);
+
+                index2++;
+            }
+
+        }
+        return coord;
+    }
 
 
     @Override
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        for (int i = 0; i <= 720; i += 72) {
-            for (int j = 0; j <= 720; j += 72) {
-                testBoxX = i;
-                testBoxY = j;
-
-
-                graphics.fillRect(testBoxX, testBoxY, 72, 72);  //100, 100
-                // here you have a 720x720 canvas
-                // you can create and draw an image using the class below e.g.
-                PositionedImage image = new PositionedImage("floor.gif", testBoxX, testBoxY);
-                image.draw(graphics);
+        int indexX = 0;
+        int indexY = 0;
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map.length; j++) {
+                if (map[i][j] == 48) {
+                    indexX = i * 72;
+                    indexY = j * 72;
+                    graphics.fillRect(indexX, indexY, 72, 72);
+                    PositionedImage image = new PositionedImage("wall.png", indexX, indexY);
+                    image.draw(graphics);
+                } else if (map[i][j] == 49) {
+                    indexX = i * 72;
+                    indexY = j * 72;
+                    graphics.fillRect(indexX, indexY, 72, 72);
+                    PositionedImage image = new PositionedImage("floor.gif", indexX, indexY);
+                    image.draw(graphics);
+                }
             }
-
         }
+        hero.draw(graphics);
+
     }
-        // here you have a 720x720 canvas
-        // you can create and draw an image using the class below e.g.
-        // PositionedImage image = new PositionedImage("floor.gif", testBoxX, testBoxY);
-        //image.draw(graphics);
 
 
-        public static void main (String[]args){
+    // To be a KeyListener the class needs to have these 3 methods in it
+    @Override
+    public void keyTyped(KeyEvent e) {
 
-
-            // Here is how you set up a new window and adding our board to it
-            JFrame frame = new JFrame("RPG Game");
-            Board board = new Board();
-            frame.add(board);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-            frame.pack();
-
-
-            // Here is how you can add a key event listener
-            // The board object will be notified when hitting any key
-            // with the system calling one of the below 3 methods
-            frame.addKeyListener(board);
-            // Notice (at the top) that we can only do this
-            // because this Board class (the type of the board object) is also a KeyListener
-
-
-        }
-
-        // To be a KeyListener the class needs to have these 3 methods in it
-        @Override
-        public void keyTyped (KeyEvent e){
-
-        }
-
-        @Override
-        public void keyPressed (KeyEvent e){
-
-        }
-
-        // But actually we can use just this one for our goals here
-        @Override
-        public void keyReleased (KeyEvent e){
-            // When the up or down keys hit, we change the position of our box
-            if (e.getKeyCode() == KeyEvent.VK_UP) {
-                testBoxY -= 100;
-            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                testBoxY += 100;
-            }
-            // and redraw to have a new picture with the new coordinates
-            repaint();
-        }
     }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    // But actually we can use just this one for our goals here
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // When the up or down keys hit, we change the position of our box
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            hero.posY -= 72;
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            hero.posY += 72;
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            hero.posX -= 72;
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            hero.posX += 72;
+        }
+        // and redraw to have a new picture with the new coordinates
+        repaint();
+    }
+}
