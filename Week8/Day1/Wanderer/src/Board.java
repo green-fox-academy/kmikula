@@ -18,9 +18,7 @@ public class Board extends JComponent implements KeyListener {
 
 
     PositionedImage hero = new PositionedImage("hero-down.png", 0, 0);
-//    PositionedImage hero2 = new PositionedImage("hero-up.png", 0, 0);
-//    PositionedImage hero3 = new PositionedImage("hero-left.png", 0, 0);
-//    PositionedImage hero4 = new PositionedImage("hero-right.png", 0, 0);
+
 
     public Board() {
 
@@ -102,38 +100,41 @@ public class Board extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            if ( hero.posY >= 72) {
+            if (hero.posY >= 72) {
                 hero.posY -= 72;
-
                 hero = new PositionedImage("src/hero-up.png", hero.posX, hero.posY);
-            }else{
-                hero.posY+=0;
+            } else {
+                hero.posY += 0;
+                hero = new PositionedImage("src/hero-up.png", hero.posX, hero.posY);
             }
 
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 
-            if ( hero.posY < 648) {
+            if (hero.posY < 648) {
                 hero.posY += 72;
                 hero = new PositionedImage("src/hero-down.png", hero.posX, hero.posY);
-            }else{
+            } else {
                 hero.posY += 0;
+                hero = new PositionedImage("src/hero-down.png", hero.posX, hero.posY);
             }
 
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 
-            if ( hero.posX >= 72) {
+            if (hero.posX >= 72) {
                 hero.posX -= 72;
                 hero = new PositionedImage("src/hero-left.png", hero.posX, hero.posY);
-            }else{
+            } else {
                 hero.posX -= 0;
+                hero = new PositionedImage("src/hero-left.png", hero.posX, hero.posY);
             }
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
-            if ( hero.posX < 648) {
+            if (hero.posX < 648) {
                 hero.posX += 72;
                 hero = new PositionedImage("src/hero-right.png", hero.posX, hero.posY);
-            }else{
+            } else {
                 hero.posX += 0;
+                hero = new PositionedImage("src/hero-right.png", hero.posX, hero.posY);
             }
 
         }
