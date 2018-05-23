@@ -102,28 +102,39 @@ public class Board extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
         if (e.getKeyCode() == KeyEvent.VK_UP) {
+            if ( hero.posY >= 72) {
+                hero.posY -= 72;
 
-            hero.posY -= 72;
-
-          // hero.posY =testBoxY- 72;
-          hero = new PositionedImage("src/hero-up.png",hero.posX, hero.posY);
+                hero = new PositionedImage("src/hero-up.png", hero.posX, hero.posY);
+            }else{
+                hero.posY+=0;
+            }
 
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 
-
-            hero.posY += 72;
-           hero = new PositionedImage("src/hero-down.png", hero.posX, hero.posY);
+            if ( hero.posY < 648) {
+                hero.posY += 72;
+                hero = new PositionedImage("src/hero-down.png", hero.posX, hero.posY);
+            }else{
+                hero.posY += 0;
+            }
 
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 
-
-            hero.posX -= 72;
-            hero = new PositionedImage("src/hero-left.png", hero.posX, hero.posY);
+            if ( hero.posX >= 72) {
+                hero.posX -= 72;
+                hero = new PositionedImage("src/hero-left.png", hero.posX, hero.posY);
+            }else{
+                hero.posX -= 0;
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
-
-            hero.posX += 72;
-            hero = new PositionedImage("src/hero-right.png", hero.posX, hero.posY);
+            if ( hero.posX < 648) {
+                hero.posX += 72;
+                hero = new PositionedImage("src/hero-right.png", hero.posX, hero.posY);
+            }else{
+                hero.posX += 0;
+            }
 
         }
         // and redraw to have a new picture with the new coordinates
