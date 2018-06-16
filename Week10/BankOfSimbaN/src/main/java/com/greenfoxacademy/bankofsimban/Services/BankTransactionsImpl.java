@@ -7,16 +7,19 @@ import java.util.ArrayList;
 
 @Service
 public class BankTransactionsImpl implements BankTransactions {
+    BankAccount bankAccount = new BankAccount();
 
     private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
     @Override
     public void addBankAccount(BankAccount bankAccount) {
-    bankAccounts.add(bankAccount);
+        bankAccounts.add(bankAccount);
     }
 
     @Override
     public ArrayList<BankAccount> getAllAccounts() {
         return bankAccounts;
     }
+
+
 }

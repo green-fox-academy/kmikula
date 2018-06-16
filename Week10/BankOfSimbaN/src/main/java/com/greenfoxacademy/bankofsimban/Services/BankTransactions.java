@@ -11,4 +11,5 @@ public interface BankTransactions {
     public void addBankAccount(BankAccount bankAccount);
 
     ArrayList<BankAccount> getAllAccounts();
+
 }

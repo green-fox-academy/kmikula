@@ -22,8 +22,8 @@ public class WebController {
 
     @GetMapping("/show")
     public String showAccount(Model model) {
-        BankAccount bankAccount = new BankAccount("Simba", (double) 2000, "lion");
-        DecimalFormat df = new DecimalFormat("####0.000");
+        BankAccount bankAccount = new BankAccount("Simba", (double) 2000, "lion", true, true);
+        DecimalFormat df = new DecimalFormat("####0.00");
         double formattedBalance = Double.valueOf(df.format(bankAccount.getBalance()));
 
         model.addAttribute("name", "Simba");
@@ -40,10 +40,10 @@ public class WebController {
 
     @GetMapping("/list")
     public String displayAccounts(Model model) {
-        BankAccount bankAcc1 = new BankAccount("Zazu", 500.25, "bird");
-        BankAccount bankAcc2 = new BankAccount("Nala", 800.05, "lion");
-        BankAccount bankAcc3 = new BankAccount("Rafiki", 430.02, "monkey");
-        BankAccount bankAcc4 = new BankAccount("Timba", 300.04, "meerkat");
+        BankAccount bankAcc1 = new BankAccount("Zazu", 500.25, "bird", false, true);
+        BankAccount bankAcc2 = new BankAccount("Nala", 800.05, "lion", true, true);
+        BankAccount bankAcc3 = new BankAccount("Rafiki", 430.02, "monkey", false, true);
+        BankAccount bankAcc4 = new BankAccount("Scar", 300.04, "meerkat", false, false);
 
         bankTransactions.addBankAccount(bankAcc1);
         bankTransactions.addBankAccount(bankAcc2);

@@ -2,20 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thymeleaf Exercise #</title>
-    <link rel="stylesheet" th:href="@{/style.css}" />
-    <meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
 </head>
 <body>
 <table>
     <tr style="background-color:aliceblue">
+        <th>INDEX</th>
         <th>NAME</th>
         <th>BALANCE</th>
         <th>TYPE</th>
+        <th>KING</th>
+        <th>GOOD OR BAD GUY</th>
     </tr>
-    <tr th:each="account : ${accountList}" style="background-color:lightgray" align="center">
+    <tr th:each="account,iterstat : ${accountList}" th:class="${iterstat.index}" style="background-color:lightgray"
+        align="center">
+        <td th:text="${iterstat.index}"></td>
         <td th:text="${account.name}"></td>
         <td th:text="${account.balance}+' Zebra'"></td>
         <td th:text="${account.animalType}"></td>
+        <td th:if="${account.isKing()}" style="color: orange">king</td>
+        <td th:unless="${account.isKing()}" style="color: black">not king
+        <td th:if="${account.isGoodGuy()}">good guy</td>
+        <td th:unless="${account.isGoodGuy()}">bad guy</td>
     </tr>
 </table>
 
