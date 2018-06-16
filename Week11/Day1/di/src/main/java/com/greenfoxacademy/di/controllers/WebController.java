@@ -31,14 +31,27 @@ public class WebController {
     @GetMapping("useful/{email}")
     public String emailCheck(@RequestParam("email") String address, Model model) {
 
-       // String address = "mikula_klara@yahoo.fr";
         model.addAttribute("emailCheck", utilityService.validateEmail(address));
         model.addAttribute("trueResponse", "is@this.valid is a valid email address");
         model.addAttribute("falseResponse", "not_valid_email.com is not a valid email address");
         return "email";
     }
 
+    @GetMapping("useful/encoder")
+    public String ceasarEncoder(@RequestParam("text") String text,
+                                @RequestParam("number") int number, Model model) {
+        String encoded = utilityService.caesar(text, number);
+        model.addAttribute("encodedText", encoded);
+        return "encoder";
+    }
 
+    @GetMapping("useful/decoder")           //TODO: debug
+    public String ceasarDecoder(@RequestParam("text") String text,
+                                @RequestParam("number") int number, Model model) {
+        String encoded = utilityService.caesar(text, (number * -1));
+        model.addAttribute("encodedText", encoded);
+        return "encoder";
+    }
 }
 
 
