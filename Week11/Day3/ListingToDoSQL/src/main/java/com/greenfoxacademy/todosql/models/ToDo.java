@@ -22,11 +22,15 @@ public class ToDo {
     Boolean urgent;
     Boolean done;
 
-    public ToDo(String title, boolean b, boolean b1) {
+    public ToDo() {
 
-        this.title=title;
-        this.urgent=b;
-        this.done=b1;
+    }
+
+    public ToDo(String title) {
+
+        this.title = title;
+        this.urgent = false;
+        this.done = false;
     }
 
     public Long getId() {
