@@ -8,8 +8,12 @@ import java.util.ArrayList;
 @Service
 public interface BankTransactions {
 
-    public void addBankAccount(BankAccount bankAccount);
+    void addBankAccount(BankAccount bankAccount);
+
+    void createAccounts();
 
     ArrayList<BankAccount> getAllAccounts();
+
+    double increaseBalance(String name);
 
 }
