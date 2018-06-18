@@ -9,8 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ListingtodosApplication implements CommandLineRunner {
-@Autowired
+    @Autowired
     ToDoRepository toDoRepository;
+
 
 
     public static void main(String[] args) {

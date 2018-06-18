@@ -7,7 +7,7 @@
 <body>
 TODOS:
 <ul th:each="todo : ${todos}">
-    <li th:text="${todo.title}+${todo.urgent}+${todo.done}"></li>
+    <li th:text="${todo.id}+' '+${todo.title}+' '+${todo.urgent}+' ' +${todo.done}"></li>
 
 </ul>
 </body>
