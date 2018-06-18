@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Name Check Result</title>
+</head>
+<body>
+<p th:if="${resultMessage}" th:text="${inList}"></p>
+<p th:unless="${resultMessage}" th:text="${notInList}"></p><br>
+<p><a th:href="@{/gfa}">Main page</a></p>
+</body>
+</html>

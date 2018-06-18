@@ -12,10 +12,12 @@ public class WebController {
 
     UtilityService utilityService;
 
+
     @Autowired
     public WebController(UtilityService utilityService) {
         this.utilityService = utilityService;
     }
+
 
     @GetMapping("/useful")
     public String landingPage() {
@@ -52,6 +54,9 @@ public class WebController {
         model.addAttribute("encodedText", encoded);
         return "encoder";
     }
+
+
+
 }
 
 
