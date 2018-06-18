@@ -6,9 +6,23 @@
 </head>
 <body>
 TODOS FOR TODAY:
-<ul th:each="todo : ${todos}">
-    <li th:text="${todo.id}+' '+${todo.title}+' '+${todo.urgent}+' ' +${todo.done}"></li>
+<table>
+    <tr style="background-color:midnightblue">
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        <th>DELETE</th>
+    </tr>
+    <tr style="background-color:lightblue" th:each="todo : ${todos}">
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.urgent}"></td>
+        <td th:text="${todo.done}"></td>
+        <td> <a th:href="@{'/{id}/delete'(id=${todo.id})}" th:text="delete"></a></td>
+    </tr>
+</table>
 
-</ul>
+<p><a th:href="@{/addtodo}">Add todo item</a></p>
 </body>
 </html>

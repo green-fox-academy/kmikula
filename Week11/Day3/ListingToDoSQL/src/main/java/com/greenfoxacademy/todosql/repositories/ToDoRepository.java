@@ -11,4 +11,5 @@ public interface ToDoRepository extends CrudRepository<ToDo, Long> {
     ArrayList<ToDo>findAll();
 
 
+    //void delete(Optional<ToDo> byId);
 }

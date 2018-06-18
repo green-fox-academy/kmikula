@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "todo")
 public class ToDoController {
@@ -40,4 +42,12 @@ public class ToDoController {
         toDoService.add(title);
         return "redirect:/List";
     }
+
+    @GetMapping("/{id}/delete")
+    public ModelAndView delete(@PathVariable("id") Long id) {
+      toDoService.delete(id);
+
+        return new ModelAndView("redirect:/List");
+    }
+
 }

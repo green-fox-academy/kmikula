@@ -9,8 +9,10 @@ import java.util.ArrayList;
 public interface ToDoService {
 
 
-    public void add(String title);
+    void add(String title);
 
-    public ArrayList<ToDo> listToDos();
+    ArrayList<ToDo> listToDos();
+
+    void delete(Long id);
 
 }

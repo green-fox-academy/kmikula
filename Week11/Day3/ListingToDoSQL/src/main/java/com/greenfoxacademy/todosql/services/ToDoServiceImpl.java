@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+
 @Service
 public class ToDoServiceImpl implements ToDoService {
 
@@ -26,4 +27,10 @@ public class ToDoServiceImpl implements ToDoService {
     public ArrayList<ToDo> listToDos() {
         return toDoRepository.findAll();
     }
+
+    @Override
+    public void delete(Long id) {
+        toDoRepository.deleteById(id);
+    }
+
 }
