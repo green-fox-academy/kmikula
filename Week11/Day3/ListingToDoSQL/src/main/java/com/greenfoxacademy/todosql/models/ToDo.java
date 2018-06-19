@@ -29,7 +29,7 @@ public class ToDo {
     public ToDo(String title) {
 
         this.title = title;
-        this.urgent = false;
+        this.urgent = true;
         this.done = false;
     }
 

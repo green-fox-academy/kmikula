@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public interface ToDoRepository extends CrudRepository<ToDo, Long> {
     ArrayList<ToDo>findAll();
 
+    ToDo findToDoById(Long id);
 
-    //void delete(Optional<ToDo> byId);
 }

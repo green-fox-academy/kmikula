@@ -15,4 +15,8 @@ public interface ToDoService {
 
     void delete(Long id);
 
+    ToDo edit(Long id);
+
+    void save(Long id, String title, Boolean urgent, Boolean done);
+
 }

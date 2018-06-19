@@ -4,10 +4,7 @@ import com.greenfoxacademy.todosql.services.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "todo")
@@ -45,9 +42,26 @@ public class ToDoController {
 
     @GetMapping("/{id}/delete")
     public ModelAndView delete(@PathVariable("id") Long id) {
-      toDoService.delete(id);
+        toDoService.delete(id);
 
         return new ModelAndView("redirect:/List");
     }
 
+    @GetMapping("/{id}/edit")
+    public ModelAndView edit(@PathVariable("id") Long id, Model model) {
+        toDoService.edit(id);
+        model.addAttribute("todoItem", toDoService.edit(id));
+
+        return new ModelAndView("editForm");
+    }
+
+
+    @PostMapping("/save")
+    public String save(@RequestParam(value = "id") Long id, @RequestParam(value = "title") String title,
+                       @RequestParam(required = false,defaultValue = "false", value = "urgent") Boolean urgent,
+                       @RequestParam(required = false, defaultValue = "false",value = "done") Boolean done) {
+        toDoService.save(id, title, urgent, done);
+        return "redirect:/List";
+    }
 }
+
