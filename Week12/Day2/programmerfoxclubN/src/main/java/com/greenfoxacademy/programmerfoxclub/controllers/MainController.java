@@ -33,20 +33,15 @@ public class MainController {
 
     @GetMapping("/")
     public String mainPage(@RequestParam("name") String name,
-                           @RequestParam(value = "food", defaultValue = "CHICKEN", required = true) Food food,
-                           @RequestParam(value = "drink", defaultValue = "WATER", required = false) Drink drink, Model model) {
+                           @RequestParam(value = "food", required = false) Food food,
+                           @RequestParam(value = "drink", required = false) Drink drink, Model model) {
 
-//        Food defaultFood= new Food ("SANDWICH");
+
 
         foxService.getFox().setName(name);
         model.addAttribute("name", "This is " + name);
 
 
-//        if(food == null) {
-//            model.addAttribute("food", nutritionService.getFoodList().get(0));
-//        } else{
-//            model.addAttribute("food", foxService.getFox().getFoxFood());
-//        }
 
         model.addAttribute("food", foxService.getFox().getFoxFood());
         model.addAttribute("drink", foxService.getFox().getFoxDrink());

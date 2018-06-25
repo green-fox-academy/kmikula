@@ -7,9 +7,12 @@
 <body>
 
 <img th:src="@{images/greenfox.png}"/>
-<p th:text="${name} + '. Currently living on '+ ${food} + ' and '+ ${drink}+ '. He knows '+${nrOfTricks} +' tricks.'"></p>
-
-
+<!----------------<p th:text="${name} + '. Currently living on '+ ${food} + ' and '+ ${drink}+ '. He knows '+${nrOfTricks} +' tricks.'"></p>-------->
+<p th:text="${name} + '. Currently living on '"></p>
+<p th:text="*{food}?:'CHICKEN'"></p>
+<p>and</p>
+<p th:text="*{drink}?:'FANTA.'"></p>
+<p th:text="'He knows '+${nrOfTricks} +' tricks.'"></p>
 <p style="font-size:50px"><b>Known tricks</b></p>
 
 <ul th:each="trick:${tricks}">
