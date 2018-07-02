@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDos</title>
+</head>
+<body>
+<h2>Search:</h2>
+
+<form action="#" th:action="@{/search}" method=post>
+    <input type="text" name="title"> </input><br>
+
+    <input type="submit" value="submit" name="submit"> </input>
+</form>
+TODOS FOR TODAY:
+<table>
+    <tr style="background-color:midnightblue">
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        <th>DELETE</th>
+        <th>EDIT</th>
+        <th>ASSIGNEE</th>
+    </tr>
+    <tr style="background-color:lightblue" th:each="todo : ${todos}">
+        <td th:text="${todo.id}"></td>
+        <td th:text="${todo.title}"></td>
+        <td th:text="${todo.urgent}"></td>
+        <td th:text="${todo.done}"></td>
+        <td><a th:href="@{'/{id}/delete'(id=${todo.id})}" th:text="delete"></a></td>
+        <td><a th:href="@{'/{id}/edit'(id=${todo.id})}" th:text="edit"></a></td>
+        <td th:text="${todo.assignee}"></td>
+    </tr>
+</table>
+
+<p><a th:href="@{/addtodo}">Add todo item</a></p>
+
+<p><a th:href="@{/assignees}">Assignees</a></p>
+</body>
+</html>

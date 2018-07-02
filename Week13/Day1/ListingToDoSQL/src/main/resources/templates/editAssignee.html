@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Assignee</title>
+</head>
+<body>
+<form action="#" th:action="@{/saveName}" method = post th:object="${assigneeItem}">
+    <p>Assignee Name    <input type="text" name="name" th:value="${assigneeItem.name}"> </input></p>
+    <label th:for = "${assigneeItem.id}"></label>
+    <input th:type="hidden" name="id" th:field="*{id}" > </input>
+    <input type="submit" value ="submit" name="submit"> </input>
+</form>
+</body>
+</html>

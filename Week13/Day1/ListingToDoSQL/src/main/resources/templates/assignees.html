@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignees</title>
+</head>
+<body>
+<table>
+    <tr style="background-color:midnightblue">
+        <th>ASSIGNEE ID</th>
+        <th>NAME</th>
+        <th>E-MAIL</th>
+        <th>EDIT</th>
+        <th>REMOVE</th>
+        </tr>
+<tr style="background-color:lightblue" th:each="assignee : ${assignees}">
+    <td th:text="${assignee.id}"></td>
+    <td th:text="${assignee.name}"></td>
+    <td th:text="${assignee.email}"></td>
+    <td> <a th:href="@{'/{id}/editAssignee'(id=${assignee.id})}" th:text="edit"></a></td>
+    <td> <a th:href="@{'/{id}/removeAssignee'(id=${assignee.id})}" th:text="remove"></a></td>
+</tr>
+</table>
+<p>Add new Assignee:</p>
+<form action="#" th:action="@{/addAssignee}" method = post>
+<span>Name:</span>    <input type="text" name="name"> </input>
+
+    <span>E-mail:</span>     <input type="text" name="email"> </input>
+    <input type="submit" value ="submit" name="submit"> </input>
+</form>
+
+</body>
+</html>
