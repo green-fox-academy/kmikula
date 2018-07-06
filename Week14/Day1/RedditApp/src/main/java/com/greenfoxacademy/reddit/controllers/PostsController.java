@@ -36,4 +36,10 @@ public class PostsController {
 
         return postService.upVote(id);
     }
+
+    @PutMapping("/posts/{id}/downvote")
+    public Post downVote(@PathVariable(value = "id") Long id) {
+
+        return postService.downVote(id);
+    }
 }

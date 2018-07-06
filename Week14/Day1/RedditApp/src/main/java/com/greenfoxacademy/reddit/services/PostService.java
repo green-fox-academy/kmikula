@@ -13,4 +13,6 @@ public interface PostService {
     Post addPost(String title, String url);
 
     Post upVote(Long id);
+
+    Post downVote(Long id);
 }

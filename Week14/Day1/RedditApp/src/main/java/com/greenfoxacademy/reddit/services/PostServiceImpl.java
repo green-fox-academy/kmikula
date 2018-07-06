@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService {
         Post post = new Post();
         post.setTitle(title);
         post.setUrl(url);
-//        post.setScore(score);
+
         postRepository.save(post);
         return postRepository.findPostByTitle(title);
     }
@@ -40,9 +40,19 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post upVote(Long id) {
 
-      //  Post updatedPost = new Post();
 
         Integer newScore = postRepository.findPostById(id).getScore() + 1;
+        postRepository.findPostById(id).setScore(newScore);
+        postRepository.save(postRepository.findPostById(id));
+
+        System.out.println(postRepository.findPostById(id).getScore());
+
+        return postRepository.findPostById(id);
+    }
+
+    @Override
+    public Post downVote(Long id) {
+        Integer newScore = postRepository.findPostById(id).getScore() - 1;
         postRepository.findPostById(id).setScore(newScore);
         postRepository.save(postRepository.findPostById(id));
 
