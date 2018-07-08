@@ -50,10 +50,7 @@ public class ToDoServiceImpl implements ToDoService {
         todo.setDone(done);
         todo.setAssignee(assigneeRepository.findAssigneeByName(assigneeName));
 
-//        toDoRepository.findToDoById(id).setTitle(title);
-//        toDoRepository.findToDoById(id).setUrgent(urgent);
-//        toDoRepository.findToDoById(id).setDone(done);
-//        toDoRepository.findToDoById(id).setAssignee(toDoRepository.findAssigneeByAssigneeName(assigneeName));
+
         toDoRepository.save(todo);
     }
 

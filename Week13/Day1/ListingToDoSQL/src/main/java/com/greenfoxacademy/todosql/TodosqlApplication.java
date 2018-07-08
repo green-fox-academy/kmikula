@@ -24,10 +24,10 @@ public class TodosqlApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Assignee businessMan = new Assignee("name", "email");
+        Assignee assignee = new Assignee("Mr Anderson", "email");
         ToDo toSAve = new ToDo("water the plants");
-        assigneeRepository.save(businessMan);
-        toSAve.setAssignee(businessMan);
+        assigneeRepository.save(assignee);
+        toSAve.setAssignee(assignee);
         toDoRepository.save(toSAve);
     }
 }

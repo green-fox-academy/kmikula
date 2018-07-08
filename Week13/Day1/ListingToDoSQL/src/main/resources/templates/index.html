@@ -30,7 +30,7 @@ TODOS FOR TODAY:
         <td th:text="${todo.done}"></td>
         <td><a th:href="@{'/{id}/delete'(id=${todo.id})}" th:text="delete"></a></td>
         <td><a th:href="@{'/{id}/edit'(id=${todo.id})}" th:text="edit"></a></td>
-        <td th:text="${todo.assignee.getName()}"></td>
+        <td><a th:href="@{'/{id}/listAssigneeTodos'(id=${todo.assignee.id})}" th:text="${todo.assignee.getName()}"></a></td>
     </tr>
 </table>
 

@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class ToDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "todoId")
+    @Column(name = "todo_Id")
     Long id;
     String title;
     Boolean urgent;
@@ -28,12 +28,12 @@ public class ToDo {
     private Assignee assignee;
 
     public ToDo() {
-//        ArrayList<Assignee> assignees = new ArrayList<>();
+
 
     }
 
     public ToDo(String title) {
-//        ArrayList<Assignee> assignees = new ArrayList<>();
+
         this.title = title;
         this.urgent = true;
         this.done = false;
@@ -79,12 +79,6 @@ public class ToDo {
         this.assignee = assignee;
     }
 
-//    public ArrayList<Assignee> getAssignees() {
-//        return assignees;
-//    }
-//
-//    public void setAssignees(ArrayList<Assignee> assignees) {
-//        this.assignees = assignees;
-//    }
+
 
 }

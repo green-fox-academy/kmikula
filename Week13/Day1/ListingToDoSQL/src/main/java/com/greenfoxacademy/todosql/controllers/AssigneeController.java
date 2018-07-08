@@ -50,4 +50,12 @@ public class AssigneeController {
         assigneeService.addAssignee(name, email);
         return "redirect:/assignees";
     }
+
+    @GetMapping("/{id}/listAssigneeTodos")
+    public ModelAndView listAssigneeTodos(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("assigneeTodos", assigneeService.listAssigneeTodos(id));
+        return new ModelAndView("assigneeTodos");
+    }
 }
+
+
