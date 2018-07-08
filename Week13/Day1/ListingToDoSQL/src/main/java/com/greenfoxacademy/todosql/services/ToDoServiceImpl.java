@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todosql.services;
 
 import com.greenfoxacademy.todosql.models.ToDo;
+import com.greenfoxacademy.todosql.repositories.AssigneeRepository;
 import com.greenfoxacademy.todosql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +12,14 @@ import java.util.ArrayList;
 public class ToDoServiceImpl implements ToDoService {
 
     ToDoRepository toDoRepository;
+    AssigneeRepository assigneeRepository;
 
     @Autowired
-    public ToDoServiceImpl(ToDoRepository toDoRepository) {
+    public ToDoServiceImpl(ToDoRepository toDoRepository, AssigneeRepository assigneeRepository) {
         this.toDoRepository = toDoRepository;
+        this.assigneeRepository = assigneeRepository;
     }
+
 
     @Override
     public void add(String title) {
@@ -39,12 +43,12 @@ public class ToDoServiceImpl implements ToDoService {
     }
 
     @Override
-    public void save(Long id, String title, Boolean urgent, Boolean done, String assigneeName) {
+    public void save(Long id, String title, Boolean urgent, Boolean done , String assigneeName) {
         ToDo todo = toDoRepository.findToDoById(id);
         todo.setTitle(title);
         todo.setUrgent(urgent);
         todo.setDone(done);
-        todo.setAssignee(toDoRepository.findAssigneeByAssigneeName(assigneeName));
+        todo.setAssignee(assigneeRepository.findAssigneeByName(assigneeName));
 
 //        toDoRepository.findToDoById(id).setTitle(title);
 //        toDoRepository.findToDoById(id).setUrgent(urgent);

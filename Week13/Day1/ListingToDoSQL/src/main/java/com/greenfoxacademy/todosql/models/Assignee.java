@@ -22,9 +22,6 @@ public class Assignee {
     private String name;
     private String email;
 
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name="todoId")
-//    ArrayList<ToDo>todos;
 
     public Assignee() {
         ArrayList<ToDo>todos = new ArrayList<>();

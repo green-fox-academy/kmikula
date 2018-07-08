@@ -23,7 +23,7 @@ public class ToDo {
     Boolean done;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "assignee_Id")
     private Assignee assignee;
 

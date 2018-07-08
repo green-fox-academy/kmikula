@@ -35,25 +35,6 @@ public class ToDoController {
 
     }
 
-//    @GetMapping("/assignees")
-//    public String listAssignees(Model model) {
-//        model.addAttribute("assignees", assigneeService.listAssignees());
-//        return "assignees";
-//    }
-//
-//    @GetMapping("/{id}/editAssignee")
-//    public ModelAndView editAssignee(@PathVariable("id") Long id, Model model) {
-//
-//        model.addAttribute("assigneeItem", assigneeService.editAssignee(id));
-//        return new ModelAndView("editAssignee");
-//    }
-//
-//    @PostMapping("/saveName")
-//    public String saveName(@RequestParam(value = "id") Long id,
-//                           @RequestParam(value = "name") String name) {
-//        assigneeService.saveAssignee(id, name);
-//        return "redirect:/assignees";
-//    }
 
     @PostMapping("/search")
     public String search(@RequestParam("title") String title, Model model) {
@@ -91,7 +72,8 @@ public class ToDoController {
 
 
     @PostMapping("/save")
-    public String save(@RequestParam(value = "id") Long id, @RequestParam(value = "title") String title,
+    public String save(@RequestParam(value = "id") Long id,
+                       @RequestParam(value = "title") String title,
                        @RequestParam(required = false, defaultValue = "false", value = "urgent") Boolean urgent,
                        @RequestParam(required = false, defaultValue = "false", value = "done") Boolean done,
                        /*@RequestParam(value = "assigneeId") Long assigneeId,*/

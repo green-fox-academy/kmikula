@@ -12,6 +12,8 @@ public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
 
     Assignee findAssigneeById(Long id);
 
+    Assignee findAssigneeByName(String name);
+
 
 
 

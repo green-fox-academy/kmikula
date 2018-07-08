@@ -14,7 +14,7 @@ public class AssigneeController {
     private final AssigneeService assigneeService;
 
     public AssigneeController(AssigneeService assigneeService) {
-       this.assigneeService = assigneeService;
+        this.assigneeService = assigneeService;
     }
 
     @GetMapping("/assignees")

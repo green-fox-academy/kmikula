@@ -17,12 +17,9 @@ public interface ToDoService {
 
     ToDo edit(Long id);
 
- //   void save(Long id, String title, Boolean urgent, Boolean done, String assigneeName);
-//    void save(Long id, String title, Boolean urgent, Boolean done, Long assigneeId);
     void save(Long id, String title, Boolean urgent, Boolean done, String assigneeName);
 
     ArrayList<ToDo> lookUpTitle(String title);
-
 
 
 }

@@ -15,7 +15,7 @@ public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
     ArrayList<ToDo> findAllToDoByTitle(String title);
 
-    Assignee findAssigneeByAssigneeName(String name);
+    Assignee findAssigneeByAssigneeName(String name);   //másik repobol kell kikeresni az assignee-t
     Assignee findAssigneeByAssigneeId(Long assigneeId);
     Assignee findAssigneeByAssigneeIdAndAssigneeName(Long assigneeId, String assigneeName);
 
