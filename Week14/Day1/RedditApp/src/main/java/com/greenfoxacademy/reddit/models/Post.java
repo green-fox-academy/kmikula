@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 public class Post {
@@ -14,18 +15,24 @@ public class Post {
     private Long id;
     private String title;
     private String url;
-    private LocalDateTime timestamp;
+
+    private Timestamp timestamp;
     private Integer score;
 
 
     public Post() {
-        this.timestamp = LocalDateTime.now();
+
+        Instant instant = Instant.now();
+        this.timestamp = java.sql.Timestamp.from(instant);
+
     }
 
     public Post(String title, String url, Integer score) {
         this.title = title;
         this.url = url;
-        this.timestamp = LocalDateTime.now();
+        //      this.timestamp = LocalDateTime.now();
+        Instant instant = Instant.now();
+        this.timestamp = java.sql.Timestamp.from(instant);
         this.score = score;
     }
 
@@ -53,11 +60,12 @@ public class Post {
         this.url = url;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+
+    public long getTimestamp() {
+        return timestamp.getTime();
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
