@@ -11,10 +11,10 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String username;
-    String text;
-    Timestamp timestamp;
+    private Long id;
+    private String username;
+    private String text;
+    private Timestamp timestamp;
 
     public Message() {
         this.timestamp = new Timestamp(System.currentTimeMillis());

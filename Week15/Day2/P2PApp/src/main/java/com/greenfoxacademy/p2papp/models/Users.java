@@ -7,8 +7,8 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-      Long id;
-    String name;
+    private Long id;
+    private String name;
 
     public Users() {
     }

@@ -17,10 +17,10 @@ public class ToDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "todo_Id")
-    Long id;
-    String title;
-    Boolean urgent;
-    Boolean done;
+    private Long id;
+    private String title;
+    private Boolean urgent;
+    private Boolean done;
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
