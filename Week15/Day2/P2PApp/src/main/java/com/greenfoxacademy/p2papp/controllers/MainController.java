@@ -36,6 +36,7 @@ public class MainController {
     public String renderMainpage( Model model) {
 
         model.addAttribute("username", usersService.findUser(1L).getName());
+        model.addAttribute("messageList",usersService.listMessages());
 
         return "mainpage";
     }
@@ -45,6 +46,14 @@ public class MainController {
 
         usersService.updateUser(1L, name);
         model.addAttribute("username", usersService.findUser(1L).getName());
+
+        return "redirect:/mainpage";
+    }
+
+    @PostMapping("/storemessage")
+    public String storeMessage(@RequestParam("message")String message) {
+
+        usersService.saveMessage(usersService.findUser(1L).getName(),message);
 
         return "redirect:/mainpage";
     }

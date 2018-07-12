@@ -1,18 +1,24 @@
 package com.greenfoxacademy.p2papp.services;
 
+import com.greenfoxacademy.p2papp.models.Message;
 import com.greenfoxacademy.p2papp.models.Users;
+import com.greenfoxacademy.p2papp.repositories.MessageRepository;
 import com.greenfoxacademy.p2papp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsersServiceImpl implements UsersService {
 
     UserRepository userRepository;
+    MessageRepository messageRepository;
 
     @Autowired
-    public UsersServiceImpl (UserRepository userRepository) {
+    public UsersServiceImpl (UserRepository userRepository, MessageRepository messageRepository) {
         this.userRepository = userRepository;
+        this.messageRepository = messageRepository;
     }
 
     @Override
@@ -31,5 +37,20 @@ public class UsersServiceImpl implements UsersService {
     public void updateUser(Long id, String name) {
         userRepository.findUsersById(id).setName(name);
         userRepository.save(userRepository.findUsersById(id));
+    }
+
+    @Override
+    public void saveMessage(String name, String text) {
+        Message message = new Message();
+        message.setUsername(name);
+        message.setText(text);
+
+        messageRepository.save(message);
+
+    }
+
+    @Override
+    public List<Message> listMessages() {
+      return messageRepository.findAll();
     }
 }
