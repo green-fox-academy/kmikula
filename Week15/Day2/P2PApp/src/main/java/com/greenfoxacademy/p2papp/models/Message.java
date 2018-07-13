@@ -1,24 +1,24 @@
 package com.greenfoxacademy.p2papp.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String text;
     private Timestamp timestamp;
 
     public Message() {
-        this.timestamp = new Timestamp(System.currentTimeMillis());
-
+  //      this.timestamp = new Timestamp(System.currentTimeMillis());
+        Instant instant = Instant.now();
+        this.timestamp = java.sql.Timestamp.from(instant);
+        this.id = (long)(Math.random() * 9999999 + 1000000);
     }
 
     public Long getId() {

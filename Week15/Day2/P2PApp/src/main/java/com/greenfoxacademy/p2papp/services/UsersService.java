@@ -4,6 +4,7 @@ import com.greenfoxacademy.p2papp.models.Message;
 import com.greenfoxacademy.p2papp.models.Users;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -18,5 +19,7 @@ public interface UsersService {
     void saveMessage(String name, String text);
 
     List<Message>listMessages();
+
+    void saveReceivedMessage(Long id, String name, String text, Timestamp timestamp);
 
 }

@@ -7,6 +7,7 @@ import com.greenfoxacademy.p2papp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -52,5 +53,16 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public List<Message> listMessages() {
       return messageRepository.findAll();
+    }
+
+    @Override
+    public void saveReceivedMessage(Long id, String name, String text, Timestamp timestamp) {
+        Message message = new Message();
+        message.setId(id);
+        message.setUsername(name);
+        message.setText(text);
+        message.setTimestamp(timestamp);
+
+        messageRepository.save(message);
     }
 }
