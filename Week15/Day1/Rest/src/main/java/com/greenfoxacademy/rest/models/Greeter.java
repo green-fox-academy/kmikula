@@ -4,7 +4,6 @@ public class Greeter {
 
     private String name;
     private String title;
-    private String error;
     private String welcome_message;
 
     public String getWelcome_message() {
@@ -34,11 +33,5 @@ public class Greeter {
         this.title = title;
     }
 
-    public String getError() {
-        return error;
-    }
 
-    public void setError(String error) {
-        this.error = error;
-    }
 }

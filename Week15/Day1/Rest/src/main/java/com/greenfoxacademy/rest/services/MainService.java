@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Service
 public interface MainService {
 
-    InputData doubleValue(int value);
+    Object doubleValue(Integer value);
 
     Greeter welcomeMessage(String name, String title);
 

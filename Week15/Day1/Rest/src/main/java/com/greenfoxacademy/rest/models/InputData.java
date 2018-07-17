@@ -31,13 +31,6 @@ public class InputData {
         this.result = result;
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String errorMessage) {
-        this.error = errorMessage;
-    }
 
 
 }

@@ -19,27 +19,35 @@ public class MainServiceImpl implements MainService {
 
 
     @Override
-    public InputData doubleValue(int value) {
+    public Object doubleValue(Integer value) {
+
 
         InputData inputData = new InputData();
+        ErrorMessage errorMessage = new ErrorMessage();
 
-        if (value != 0) {
+        if (value == null) {
+            errorMessage.setError("Please provide an input!");
+            return errorMessage;
+
+        } else {
             inputData.setReceived(value);
             inputData.setResult(inputData.getReceived() * 2);
-            //            }catch (Exception e) {
-        } else {
-            inputData.setError("Please provide an input!");
+            return inputData;
         }
 
-        return inputData;
+
     }
 
     @Override
     public Greeter welcomeMessage(String name, String title) {
+
+
         Greeter greeter = new Greeter();
         greeter.setName(name);
         greeter.setTitle(title);
         greeter.setWelcome_message("Oh, hi there " + greeter.getName() + ", my dear " + greeter.getTitle() + "!");
+
+
 
         return greeter;
     }

@@ -11,14 +11,16 @@ import java.util.ArrayList;
 public class RController {
 
     private MainService mainService;
+    private ErrorMessage errorMessage;
 
     @Autowired
-    public RController(MainService mainService) {
+    public RController(MainService mainService, ErrorMessage errorMessage) {
         this.mainService = mainService;
+        this.errorMessage = errorMessage;
     }
 
     @GetMapping("/doubling")
-    public InputData doubling(@RequestParam(value = "input") int input) {
+    public Object doubling(@RequestParam(value = "input") Integer input) {
 
         mainService.saveLogs("/doubling", String.valueOf(input));
 
@@ -28,12 +30,19 @@ public class RController {
 
 
     @GetMapping("/greeter")
-    public Greeter greeterMethod(@RequestParam(value = "name") String name,
-                                 @RequestParam(value = "title") String title) {
+    public Object greeterMethod(@RequestParam(required = false, value = "name") String name,
+                                @RequestParam(required = false, value = "title") String title) {
 
         mainService.saveLogs("/greeter", name + "," + title);
 
-        return mainService.welcomeMessage(name, title);
+        if (name == null || title == null) {
+            errorMessage.setError("Please provide a name and a title!");
+            return errorMessage;
+        } else {
+
+            return mainService.welcomeMessage(name, title);
+
+        }
     }
     //localhost:8080/greeter?name=Petike&title=student
 
@@ -46,34 +55,43 @@ public class RController {
     }
 
     @PostMapping("dountil/{what}")
-    public Dountil doUntil(@PathVariable(value = "what") String what,
-                           @RequestBody Until until) {
+    public Object doUntil(@PathVariable(value = "what") String what,
+                          @RequestBody(required = false) Until until) {
 
-        mainService.saveLogs("/dountil", what + "," + until.toString());
 
-        Dountil dountil = new Dountil();
 
-        if (what.equals("sum")) {
-            dountil = mainService.sumAllElements(until.getUntil());
+        Object object = new Object();
+
+        if (until == null) {
+            errorMessage.setError("Please provide a number!");
+            object = errorMessage;
+        } else if (what.equals("sum")) {
+            object = mainService.sumAllElements(until.getUntil());
+            mainService.saveLogs("/dountil", what + "," + until.getUntil());
         } else if (what.equals("factor")) {
-            dountil = mainService.factor(until.getUntil());
+            object = mainService.factor(until.getUntil());
+            mainService.saveLogs("/dountil", what + "," + until.getUntil());
         }
-        return dountil;
+        return object;
     }
 
     @PostMapping("/arrays")
-    public ArrayHandler arrayHandler(@RequestBody ArrayHandler arrayHandlerInput) {
+    public Object arrayHandler(@RequestBody(required = false) ArrayHandler arrayHandlerInput) {
 
-        ArrayHandler arrayHandlerResult = new ArrayHandler();
+        Object object = new Object();
 
-        if (arrayHandlerInput.getWhat().equals("sum")) {
-            arrayHandlerResult = mainService.addArrayElements(arrayHandlerInput.getNumbers());
+        if (arrayHandlerInput == null) {
+            errorMessage.setError("Please provide what to do with the numbers!");
+            object = errorMessage;
+        } else if (arrayHandlerInput.getWhat().equals("sum")) {
+            object = mainService.addArrayElements(arrayHandlerInput.getNumbers());
         } else if (arrayHandlerInput.getWhat().equals("multiply")) {
-            arrayHandlerResult = mainService.multiplyArrayElements(arrayHandlerInput.getNumbers());
+            object = mainService.multiplyArrayElements(arrayHandlerInput.getNumbers());
         } else if (arrayHandlerInput.getWhat().equals("double")) {
-            arrayHandlerResult = mainService.doubleArrayElements(arrayHandlerInput.getNumbers());
+            object = mainService.doubleArrayElements(arrayHandlerInput.getNumbers());
         }
-        return arrayHandlerResult;
+        return object;
+
     }
 
     @GetMapping("/log")
