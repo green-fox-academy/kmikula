@@ -1,6 +1,6 @@
-package com.greenfoxacademy.bankofsimban.Services;
+package com.greenfoxacademy.bankofsimban.services;
 
-import com.greenfoxacademy.bankofsimban.Models.BankAccount;
+import com.greenfoxacademy.bankofsimban.models.BankAccount;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,5 +15,7 @@ public interface BankTransactions {
     ArrayList<BankAccount> getAllAccounts();
 
     double increaseBalance(String name);
+
+    void addNewAccount(String newName, Double balance, String animalType, Boolean isKing, Boolean goodGuy);
 
 }

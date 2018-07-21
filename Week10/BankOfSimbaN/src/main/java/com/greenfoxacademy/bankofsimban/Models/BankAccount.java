@@ -1,4 +1,4 @@
-package com.greenfoxacademy.bankofsimban.Models;
+package com.greenfoxacademy.bankofsimban.models;
 
 public class BankAccount {
     private String name;

@@ -1,7 +1,7 @@
-package com.greenfoxacademy.bankofsimban.Controllers;
+package com.greenfoxacademy.bankofsimban.controllers;
 
-import com.greenfoxacademy.bankofsimban.Models.BankAccount;
-import com.greenfoxacademy.bankofsimban.Services.BankTransactions;
+import com.greenfoxacademy.bankofsimban.models.BankAccount;
+import com.greenfoxacademy.bankofsimban.services.BankTransactions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,14 +52,25 @@ public class WebController {
     }
 
     @GetMapping("/form")
-    public String createForm(Model model) {
+    public String renderForm() {
 
         return "form";
     }
 
-    @PostMapping("/raiseBalance")       //TODO:debug redirect
+    @PostMapping("/raiseBalance")
     public String increaseBalanceSubmit(@RequestParam(value = "name") String name, Model model) {
         bankTransactions.increaseBalance(name);
+
+        return "redirect:/list";
+    }
+
+    @PostMapping("/addAccount")
+    public String addAccount(@RequestParam(value = "newName") String newName,
+                             @RequestParam(value = "balance") Double balance,
+                             @RequestParam(value = "animalType") String animalType,
+                             @RequestParam(value = "isKing") Boolean isKing,
+                             @RequestParam(value = "goodGuy") Boolean goodGuy) {
+        bankTransactions.addNewAccount(newName, balance, animalType, isKing, goodGuy);
 
         return "redirect:/list";
     }
