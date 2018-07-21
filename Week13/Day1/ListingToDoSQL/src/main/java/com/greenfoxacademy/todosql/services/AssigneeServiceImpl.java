@@ -57,7 +57,7 @@ public class AssigneeServiceImpl implements AssigneeService {
 
     @Override
     public ArrayList<ToDo> listAssigneeTodos(Long id) {
-
+//        return assigneeRepository.findAllToDobyAssigneeId(id);
         return toDoRepository.findAllToDoByAssigneeId(id);
     }
 

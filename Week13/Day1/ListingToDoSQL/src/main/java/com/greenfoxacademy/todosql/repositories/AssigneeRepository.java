@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 @Repository
 public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
-    ArrayList<Assignee> findAll();
+    ArrayList<Assignee>findAll();
 
     Assignee findAssigneeById(Long id);
 
     Assignee findAssigneeByName(String name);
+
+
 
 
 }

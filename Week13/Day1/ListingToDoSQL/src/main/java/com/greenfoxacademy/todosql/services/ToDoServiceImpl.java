@@ -22,8 +22,9 @@ public class ToDoServiceImpl implements ToDoService {
 
 
     @Override
-    public void add(String title) {
-        ToDo todo = new ToDo(title);
+    public void add(String title, String assigneeName, String description, String dueDate) {
+        ToDo todo = new ToDo(title, description, dueDate);
+        todo.setAssignee(assigneeRepository.findAssigneeByName(assigneeName));
         toDoRepository.save(todo);
     }
 
@@ -50,13 +51,16 @@ public class ToDoServiceImpl implements ToDoService {
         todo.setDone(done);
         todo.setAssignee(assigneeRepository.findAssigneeByName(assigneeName));
 
-
+//        toDoRepository.findToDoById(id).setTitle(title);
+//        toDoRepository.findToDoById(id).setUrgent(urgent);
+//        toDoRepository.findToDoById(id).setDone(done);
+//        toDoRepository.findToDoById(id).setAssignee(toDoRepository.findAssigneeByAssigneeName(assigneeName));
         toDoRepository.save(todo);
     }
 
     @Override
-    public ArrayList<ToDo> lookUpTitle(String title) {
-        return toDoRepository.findAllToDoByTitle(title);
+    public ArrayList<ToDo>lookUp(String input) {
+        return toDoRepository.findAllToDoByTitle(input);
     }
 
 

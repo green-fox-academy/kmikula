@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface ToDoService {
 
 
-    void add(String title);
+    void add(String title, String assignee, String description, String dueDate);
 
     ArrayList<ToDo> listToDos();
 
@@ -19,7 +19,7 @@ public interface ToDoService {
 
     void save(Long id, String title, Boolean urgent, Boolean done, String assigneeName);
 
-    ArrayList<ToDo> lookUpTitle(String title);
+    ArrayList<ToDo> lookUp(String input);
 
 
 }

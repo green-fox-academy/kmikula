@@ -39,19 +39,24 @@ public class ToDoController {
     @PostMapping("/search")
     public String search(@RequestParam("title") String title, Model model) {
 
-        model.addAttribute("lookUpItem", toDoService.lookUpTitle(title));
+        model.addAttribute("lookUpItem", toDoService.lookUp(title));
         return "searchResult";
     }
 
     @GetMapping("/addtodo")
     public String addTodoForm(Model model) {
+        model.addAttribute("assignees",assigneeService.listAssignees());
+
         return "todoForm";
     }
 
 
     @PostMapping("/addtolist")
-    public String addTodo(@RequestParam(value = "title") String title, Model model) {
-        toDoService.add(title);
+    public String addTodo(@RequestParam(value = "title") String title,
+                          @RequestParam(value = "assigneeName") String assigneeName,
+                          @RequestParam(value = "description") String description,
+                          @RequestParam(value = "dueDate") String dueDate,Model model) {
+        toDoService.add(title, assigneeName, description, dueDate);
         return "redirect:/List";
     }
 
@@ -76,7 +81,6 @@ public class ToDoController {
                        @RequestParam(value = "title") String title,
                        @RequestParam(required = false, defaultValue = "false", value = "urgent") Boolean urgent,
                        @RequestParam(required = false, defaultValue = "false", value = "done") Boolean done,
-                       /*@RequestParam(value = "assigneeId") Long assigneeId,*/
                        @RequestParam(value = "assigneeName") String  assigneeName) {
         toDoService.save(id, title, urgent, done, assigneeName);
         return "redirect:/List";

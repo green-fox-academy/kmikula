@@ -17,17 +17,24 @@ TODOS FOR TODAY:
     <tr style="background-color:midnightblue">
         <th>ID</th>
         <th>ACTION</th>
+        <th>DESCRIPTION</th>
         <th>URGENT</th>
         <th>DONE</th>
+        <th>CREATION DATE</th>
+        <th>DUE DATE</th>
         <th>DELETE</th>
         <th>EDIT</th>
         <th>ASSIGNEE</th>
+
     </tr>
     <tr style="background-color:lightblue" th:each="todo : ${todos}">
         <td th:text="${todo.id}"></td>
         <td th:text="${todo.title}"></td>
+        <td th:text="${todo.description}"></td>
         <td th:text="${todo.urgent}"></td>
         <td th:text="${todo.done}"></td>
+        <td th:text="${todo.creationDate}"></td>
+        <td th:text="${todo.dueDate}"></td>
         <td><a th:href="@{'/{id}/delete'(id=${todo.id})}" th:text="delete"></a></td>
         <td><a th:href="@{'/{id}/edit'(id=${todo.id})}" th:text="edit"></a></td>
         <td><a th:href="@{'/{id}/listAssigneeTodos'(id=${todo.assignee.id})}" th:text="${todo.assignee.getName()}"></a></td>

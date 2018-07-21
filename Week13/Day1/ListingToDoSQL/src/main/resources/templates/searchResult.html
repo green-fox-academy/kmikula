@@ -10,18 +10,26 @@
     <tr style="background-color:midnightblue">
         <th>ID</th>
         <th>ACTION</th>
+        <th>DESCRIPTION</th>
         <th>URGENT</th>
         <th>DONE</th>
+        <th>CREATION DATE</th>
+        <th>DUE DATE</th>
         <th>DELETE</th>
         <th>EDIT</th>
+        <th>ASSIGNEE</th>
     </tr>
     <tr style="background-color:lightblue" th:each="item : ${lookUpItem}">
         <td th:text="${item.id}"></td>
         <td th:text="${item.title}"></td>
+        <td th:text="${item.description}"></td>
         <td th:text="${item.urgent}"></td>
         <td th:text="${item.done}"></td>
+        <td th:text="${item.creationDate}"></td>
+        <td th:text="${item.dueDate}"></td>
         <td> <a th:href="@{'/{id}/delete'(id=${item.id})}" th:text="delete"></a></td>
         <td> <a th:href="@{'/{id}/edit'(id=${item.id})}" th:text="edit"></a></td>
+        <td><a th:href="@{'/{id}/listAssigneeTodos'(id=${item.assignee.id})}" th:text="${item.assignee.getName()}"></a></td>
     </tr>
 </table>
 

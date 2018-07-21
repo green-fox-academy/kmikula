@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -21,6 +23,10 @@ public class ToDo {
     private String title;
     private Boolean urgent;
     private Boolean done;
+    private String description;
+    private Timestamp creationDate;
+//    @DateTimeFormat(pattern="dd/MM/yyyy")
+    private String dueDate;
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -28,16 +34,23 @@ public class ToDo {
     private Assignee assignee;
 
     public ToDo() {
-
-
+//        ArrayList<Assignee> assignees = new ArrayList<>();
+        Instant instant = Instant.now();
+        this.creationDate = java.sql.Timestamp.from(instant);
     }
 
-    public ToDo(String title) {
+    public ToDo(String title, String description, String dueDate) {
 
         this.title = title;
+        this.description = description;
         this.urgent = true;
         this.done = false;
+        Instant instant = Instant.now();
+        this.creationDate = java.sql.Timestamp.from(instant);
+        this.dueDate = dueDate;
     }
+
+
 
     public Long getId() {
         return id;
@@ -80,5 +93,27 @@ public class ToDo {
     }
 
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
 }

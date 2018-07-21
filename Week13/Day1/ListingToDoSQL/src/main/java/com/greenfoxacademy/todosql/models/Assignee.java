@@ -24,7 +24,6 @@ public class Assignee {
     private String email;
 
 
-
     public Assignee() {
         List<ToDo>assigneeTodos = new ArrayList<>();
     }

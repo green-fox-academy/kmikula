@@ -11,6 +11,7 @@
     <label th:for="${todoItem.id}"></label>
     <input th:type="hidden" name="id" th:field="*{id}"> </input>
     <input th:type="hidden" name="assigneeId" th:field="*{assignee.id}"> </input>
+    <input name="description" th:field="*{description}"> </input>
 
     <p>Urgent <input th:type="checkbox" th:checked="${todoItem.getUrgent()}" th:field="*{urgent}"> </input></p>
     <p>Done <input th:type="checkbox" th:checked="${todoItem.getDone()}" th:field="*{done}"> </input></p><br>

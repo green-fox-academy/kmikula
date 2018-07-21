@@ -5,6 +5,7 @@
     <title>Assignees</title>
 </head>
 <body>
+
 <table>
     <tr style="background-color:midnightblue">
         <th>ASSIGNEE ID</th>
@@ -16,7 +17,7 @@
     <tr style="background-color:lightblue" th:each="assignee : ${assignees}">
         <td th:text="${assignee.id}"></td>
         <td><a th:href="@{'/{id}/listAssigneeTodos'(id=${assignee.id})}" th:text="${assignee.name}"></a></td>
-        <!-----  <td th:text="${assignee.name}"></td> ------->
+
         <td th:text="${assignee.email}"></td>
         <td><a th:href="@{'/{id}/editAssignee'(id=${assignee.id})}" th:text="edit"></a></td>
         <td><a th:href="@{'/{id}/removeAssignee'(id=${assignee.id})}" th:text="remove"></a></td>
@@ -29,6 +30,6 @@
     <span>E-mail:</span> <input type="text" name="email"> </input>
     <input type="submit" value="submit" name="submit"> </input>
 </form>
-
+<p><a th:href="@{'/List'}">Back to TodoList</a></p>
 </body>
 </html>
