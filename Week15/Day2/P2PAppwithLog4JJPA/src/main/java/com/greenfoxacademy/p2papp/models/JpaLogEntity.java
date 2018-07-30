@@ -2,6 +2,7 @@ package com.greenfoxacademy.p2papp.models;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.appender.db.jpa.BasicLogEventEntity;
+import org.apache.logging.log4j.message.Message;
 
 import javax.persistence.*;
 
@@ -43,12 +44,12 @@ public class JpaLogEntity extends BasicLogEventEntity {
         return this.getWrappedEvent().getLoggerName();
     }
 
-//    @Override
-//    @Column(name = "message")
-//    @Convert(converter = MyMessageConverter.class)
-//    public Message getMessage() {
-//        return this.getWrappedEvent().getMessage();
-//    }
+    @Override
+    @Column(name = "message")
+    @Convert(converter = MyMessageConverter.class)
+    public Message getMessage() {
+        return this.getWrappedEvent().getMessage();
+    }
 
 //    private static final long serialVersionUID = 1L;
 //    private long id = 0L;

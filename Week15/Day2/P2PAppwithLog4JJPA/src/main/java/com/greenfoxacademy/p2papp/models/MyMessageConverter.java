@@ -1,7 +1,14 @@
 package com.greenfoxacademy.p2papp.models;
 
-/*@Converter(autoApply = false)
-public abstract class MyMessageConverter implements AttributeConverter<org.apache.logging.log4j.message.Message, String> {
+import org.apache.logging.log4j.message.Message;
+import org.apache.logging.log4j.status.StatusLogger;
+import org.apache.logging.log4j.util.Strings;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
+@Converter(autoApply = false)
+public class MyMessageConverter implements AttributeConverter<Message, String> {
 
     private static final StatusLogger LOGGER = StatusLogger.getLogger();
 
@@ -22,4 +29,4 @@ public abstract class MyMessageConverter implements AttributeConverter<org.apach
 
         return LOGGER.getMessageFactory().newMessage(s);
     }
-}   */
+}
