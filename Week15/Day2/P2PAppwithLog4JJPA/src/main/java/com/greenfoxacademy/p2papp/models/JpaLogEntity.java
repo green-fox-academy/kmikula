@@ -1,6 +1,7 @@
 package com.greenfoxacademy.p2papp.models;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.db.jpa.BasicLogEventEntity;
 import org.apache.logging.log4j.message.Message;
 
@@ -19,6 +20,19 @@ public class JpaLogEntity extends BasicLogEventEntity {
 //    public TestEntity(LogEvent wrappedEvent) {
 //        super(wrappedEvent);
 //    }
+
+
+    public JpaLogEntity() {
+    }
+
+    public JpaLogEntity(long id) {
+        this.id = id;
+    }
+
+    public JpaLogEntity(LogEvent wrappedEvent, long id) {
+        super(wrappedEvent);
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

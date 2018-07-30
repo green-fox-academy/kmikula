@@ -12,6 +12,9 @@ public class MyMessageConverter implements AttributeConverter<Message, String> {
 
     private static final StatusLogger LOGGER = StatusLogger.getLogger();
 
+    public MyMessageConverter() {
+    }
+
     @Override
     public String convertToDatabaseColumn(final org.apache.logging.log4j.message.Message message) {
         if (message == null) {
