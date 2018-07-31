@@ -32,18 +32,9 @@ dependencies {
     runtime('mysql:mysql-connector-java')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
- //   compile 'log4j:log4j:1.2.17'
-    //  compile 'org.slf4j:slf4j-api:1.7.5'
-    //   compile 'org.slf4j:slf4j-log4j12:1.7.5'
+
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
     compile 'org.apache.logging.log4j:log4j-jpa:2.11.1'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.ContextMapAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.ContextMapJsonAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.ContextStackAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.ContextStackJsonAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.MarkerAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.MessageAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.StackTraceElementAttributeConverter'
-//    compile 'org.apache.logging.log4j.core.appender.db.jpa.converter.ThrowableAttributeConverter'
+
 }
