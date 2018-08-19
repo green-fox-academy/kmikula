@@ -22,42 +22,26 @@ public class MainServiceImpl implements MainService {
     public Object doubleValue(Integer value) {
 
 
-        InputData inputData = new InputData();
-        ErrorMessage errorMessage = new ErrorMessage();
-
         if (value == null) {
-            errorMessage.setError("Please provide an input!");
-            return errorMessage;
+            return new ErrorMessage("Please provide an input!");
 
         } else {
-            inputData.setReceived(value);
-            inputData.setResult(inputData.getReceived() * 2);
-            return inputData;
-        }
 
+            return new InputData(value, value * 2);
+        }
 
     }
 
     @Override
     public Greeter welcomeMessage(String name, String title) {
 
-
-        Greeter greeter = new Greeter();
-        greeter.setName(name);
-        greeter.setTitle(title);
-        greeter.setWelcome_message("Oh, hi there " + greeter.getName() + ", my dear " + greeter.getTitle() + "!");
-
-
-
-        return greeter;
+        return new Greeter(name, title, "Oh, hi there " + name + ", my dear " + title + "!");
     }
 
     @Override
     public Appenda appendStrings(String appendable) {
-        Appenda append = new Appenda();
-        append.setAppendable(appendable);
-        append.setAppended(append.getAppendable() + "a");
-        return append;
+
+        return new Appenda(appendable, appendable + "a");
     }
 
     @Override

@@ -6,13 +6,14 @@ public class Greeter {
     private String title;
     private String welcome_message;
 
-    public String getWelcome_message() {
-        return welcome_message;
-    }
 
-    public void setWelcome_message(String welcome_message) {
+
+    public Greeter(String name, String title, String welcome_message) {
+        this.name = name;
+        this.title = title;
         this.welcome_message = welcome_message;
     }
+
 
     public Greeter() {
     }
@@ -31,6 +32,14 @@ public class Greeter {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getWelcome_message() {
+        return welcome_message;
+    }
+
+    public void setWelcome_message(String welcome_message) {
+        this.welcome_message = welcome_message;
     }
 
 

@@ -8,6 +8,11 @@ public class Appenda {
     public Appenda() {
     }
 
+    public Appenda(String appendable, String appended) {
+        this.appendable = appendable;
+        this.appended = appended;
+    }
+
     public String getAppendable() {
         return appendable;
     }

@@ -17,16 +17,18 @@ public class Log {
     private String data;
 
 
+
+    public Log() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Log() {
-        this.createdAt = LocalDateTime.now();
     }
 
     public LocalDateTime getCreatedAt() {

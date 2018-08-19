@@ -35,13 +35,11 @@ public class RController {
 
         mainService.saveLogs("/greeter", name + "," + title);
 
-        if (name == null || title == null) {
+        if (name.length() == 0 || title.length() == 0) {
             errorMessage.setError("Please provide a name and a title!");
             return errorMessage;
         } else {
-
             return mainService.welcomeMessage(name, title);
-
         }
     }
     //localhost:8080/greeter?name=Petike&title=student
@@ -59,38 +57,42 @@ public class RController {
                           @RequestBody(required = false) Until until) {
 
 
-
-        Object object = new Object();
-
         if (until == null) {
             errorMessage.setError("Please provide a number!");
-            object = errorMessage;
+            return errorMessage;
         } else if (what.equals("sum")) {
-            object = mainService.sumAllElements(until.getUntil());
             mainService.saveLogs("/dountil", what + "," + until.getUntil());
+            return mainService.sumAllElements(until.getUntil());
+
         } else if (what.equals("factor")) {
-            object = mainService.factor(until.getUntil());
             mainService.saveLogs("/dountil", what + "," + until.getUntil());
+            return mainService.factor(until.getUntil());
+
+        } else {
+            errorMessage.setError("Incorrect input");
+            return errorMessage;
         }
-        return object;
+
     }
 
     @PostMapping("/arrays")
     public Object arrayHandler(@RequestBody(required = false) ArrayHandler arrayHandlerInput) {
 
-        Object object = new Object();
 
         if (arrayHandlerInput == null) {
             errorMessage.setError("Please provide what to do with the numbers!");
-            object = errorMessage;
+            return errorMessage;
         } else if (arrayHandlerInput.getWhat().equals("sum")) {
-            object = mainService.addArrayElements(arrayHandlerInput.getNumbers());
+            return mainService.addArrayElements(arrayHandlerInput.getNumbers());
         } else if (arrayHandlerInput.getWhat().equals("multiply")) {
-            object = mainService.multiplyArrayElements(arrayHandlerInput.getNumbers());
+            return mainService.multiplyArrayElements(arrayHandlerInput.getNumbers());
         } else if (arrayHandlerInput.getWhat().equals("double")) {
-            object = mainService.doubleArrayElements(arrayHandlerInput.getNumbers());
+            return mainService.doubleArrayElements(arrayHandlerInput.getNumbers());
+        } else {
+            errorMessage.setError("Invalid arrayhandler method");
+            return errorMessage;
         }
-        return object;
+
 
     }
 
