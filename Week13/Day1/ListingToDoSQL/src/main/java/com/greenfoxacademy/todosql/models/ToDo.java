@@ -25,16 +25,15 @@ public class ToDo {
     private Boolean done;
     private String description;
     private Timestamp creationDate;
-//    @DateTimeFormat(pattern="dd/MM/yyyy")
     private String dueDate;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "assignee_Id")
     private Assignee assignee;
 
     public ToDo() {
-//        ArrayList<Assignee> assignees = new ArrayList<>();
+
         Instant instant = Instant.now();
         this.creationDate = java.sql.Timestamp.from(instant);
     }
