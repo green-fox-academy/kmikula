@@ -28,7 +28,7 @@ public class ToDo {
     private String dueDate;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "assignee_Id")
     private Assignee assignee;
 
